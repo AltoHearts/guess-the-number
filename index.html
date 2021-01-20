@@ -1,21 +1,43 @@
 <html>
   <body>
 
-    <h1> Guess the Number!</h>
+    <h1>Guess the Number!</h>
+      <p>Refresh the page to play again!</p>
       
     <script>
-      let num = Math.floor(Math.random() * 11);
+      let num = Math.floor(Math.random() * 101);
+      
+      //will turn true if correct number uis given
+      let gotIt = false;
+      let guess = prompt("guess a number between 1 and 100");
+      let numGuesses = 0; //will store total number of guesses
 
-      let guess = prompt("guess a number between 1 and 10");
+      while(gotIt === false) {
 
-      if(num == guess)
-      {
-          alert("Got it!");
-      }else{
-          alert("Sorry!  You guessed " + guess + " and the number was " + num);
+        numGuesses ++; //increment 
+
+        if(num == guess)
+        {//true - tell user and break out of look
+            //break outta loop
+            gotIt = true;
+        }else{// false - tell user to guess again
+
+            if(num > guess){//higher
+              guess = prompt("Wrong! You guessed " + guess + ". Try guessing higher. You've made " + numGuesses + " attempt(s).");
+
+            }else{//lower
+              guess = prompt("Wrong! You guessed " + guess + ". Try guessing lower. You've made " + numGuesses + " attempt(s)." );
+
+            }
+            //alert("Sorry!  You guessed " + guess + " and the number was " + num);
+            //alert("Wrong number!!");
+            //guess = prompt("Wrong! guess a number between 1 and 10 again!");
+
+        }
       }
 
+      alert("Congratulations! You guessed the correct number, which was " + num + ", and it took you " + numGuesses + " try(s)!");
 
-</script>
+     </script>
   </body>
 </html>
